@@ -1,13 +1,13 @@
 version: "3"
 
 services:
+  # docker exec -it postgres psql -U postgres
   postgres:
     container_name: postgres
     image: postgres:16-alpine3.18
     environment:
-      POSTGRES_DB: test
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: P@ssw0rd
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
     ports:
       - "5432:5432"
     volumes:
