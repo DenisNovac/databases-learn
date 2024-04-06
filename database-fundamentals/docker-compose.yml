@@ -5,6 +5,7 @@ services:
   postgres:
     container_name: postgres
     image: postgres:16-alpine3.18
+    shm_size: 1g # shared memory for vacuum operations
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
