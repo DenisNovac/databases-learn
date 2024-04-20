@@ -1,0 +1,45 @@
+version: "3"
+
+services:
+  # docker exec -it postgres psql -U postgres
+  master:
+    container_name: master
+    image: postgres:16-alpine3.18
+    shm_size: 1g # shared memory for vacuum operations
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    #ports:
+    #  - "5432:5432"
+    volumes:
+      - master_data:/var/lib/postgresql/data
+
+  backup:
+    container_name: backup
+    image: postgres:16-alpine3.18
+    shm_size: 1g # shared memory for vacuum operations
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    #ports:
+    #  - "5432:5432"
+    volumes:
+      - backup_data:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@email.com
+      PGADMIN_DEFAULT_PASSWORD: adminpassword
+    ports:
+      - "8080:80"
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    depends_on:
+      - master
+      - backup
+
+volumes:
+  master_data:
+  backup_data:
+  pgadmin_data:
