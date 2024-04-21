@@ -32,4 +32,6 @@ Cons:
   - schema changes are hard;
   - joins.
 
-Looks like the best option for PostgreSQL right now is https://github.com/citusdata/citus .
+Looks like the best option for PostgreSQL right now is https://github.com/citusdata/citus 
+
+MySQL tool made by YouTube looks much more mature: https://github.com/vitessio/vitess
