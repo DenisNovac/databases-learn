@@ -31,11 +31,13 @@ Simplest explain with one line.
 
 `Seq Scan` - full table scan.
 
-Cost = `ms took to fetch first page - startup cost` .. `ms took to fetch last page - estimated time to finish`.
+Cost = `units of work took to fetch first page - startup cost` .. `units of work took to fetch last page - estimated time to finish`.
+
+Those units are not ms or something, it just relative number.
 
 Startup cost might be increased if there are some planning before fetching such as  aggs, filtering, etc...
 
-`168706` ms to read through all 11 millions rows.
+`168706` to read through all 11 millions rows.
 
 `rows=11000001` approx. number of rows needed to fetch for query. One can use this thing instead of select count if precise count doesn't matter.
 
