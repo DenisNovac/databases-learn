@@ -38,3 +38,7 @@ Random indices are having the costs here because rebalancing of sorted values is
 - leaf nodes are linked so it helps the range queries;
 - keys of internal nodes are duplicated somewhere in leaf nodes to have it's value *somewhere*, or else it would be impossible to fetch data of internal nodes;
   - basically internal nodes are search-only and leaf nodes could be read for actual data.
+
+## With SSD
+
+Tree rebalancing kills SSD. But there is Rocks DB which uses LSM trees which are append-only and optimized for SSDs.
